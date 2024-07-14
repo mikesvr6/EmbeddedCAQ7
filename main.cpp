@@ -7,13 +7,16 @@ DigitalOut led2(LED2);
 #define BLINKING_RATE_A     5000ms
 #define BLINKING_RATE_B     2000ms
 
+BusOut leds(LED2,LED1);
+
+
 // main() runs in its own thread in the OS
 int main()
 {
     while (true) {
-        led1 = !led1;
+        leds =0x1;
         ThisThread::sleep_for(BLINKING_RATE_A);
-        led2 = !led2;
+        leds = 0x2;
         ThisThread::sleep_for(BLINKING_RATE_B);
     }
 }
